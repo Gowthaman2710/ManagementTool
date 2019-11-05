@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+        <th >empid</th>
+        <th >projId</th>
+        <th >projDate</th>
+        <th >blocker</th>
+    </thead>
+    <tbody>
+        
+      <tr *ngFor="let i of taskList">
+        
+            <td >{{i.projId}}</td>
+            <td>{{i.empid}}</td>
+            <td>{{i.projDate}}</td>
+            <td>{{i.blocker}}</td>
+       
+      </tr>
+      
+      
+    </tbody>
+  </table>

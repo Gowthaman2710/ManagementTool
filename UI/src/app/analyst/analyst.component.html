@@ -1,0 +1,62 @@
+
+<div *ngIf="empId==0" class="card" style="margin-left:30%;max-width:40%;margin-top:10%">
+<div class="card-header bg-info">
+Enter EmpId
+</div>
+<div class="card-body">
+<label>EmpId:</label>
+<input class="form-control"type="number" #in>
+<button class="btn btn-success" (click)="sub(in.value)">Submit</button>
+</div>
+</div>
+
+<div *ngIf="empId!=0" class="card" style="margin-left:30%;max-width:40%;margin-top:10%">
+        <div class="card-header bg-warning">
+                <button class="btn btn-primary" type="submit" (click)="change('task')">Task</button>
+                <button class="btn btn-info" type="submit" (click)="change('vacation')">Vacation</button>
+            </div>
+        
+    <div *ngIf="option=='task'">
+            <div  class="card-header bg-info">
+                    Task Form
+                    </div>
+                    <div class="card-body">
+                    <form [formGroup]="projectForm" (ngSubmit)="submit()" >
+                    <div   class="form-group">
+                    <label>Project List</label>
+                    
+                    <select formControlName="projId" class="form-control">
+                        <option disabled value="">--Select--</option>
+                    <option *ngFor="let i of projList" value="{{i.projId}}">{{i.projName}}</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Date</label>
+                        
+                        <input class="form-control" formControlName="projDate" type="date" name="" id="">
+                        </div>
+                        <div class="form-group">
+                                <label>Project Date</label>
+                                
+                                <input class="form-control" formControlName="blocker" type="state" name="" id="">
+                                </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning" [disabled]="projectForm.invalid">Submit</button>
+                    </div>
+                    </form>
+                    </div>
+    </div>
+    <div *ngIf="option=='vacation'">
+<div>Vactions Left:{{selectedEmp.vacationleft}}</div>
+    
+    <div>
+        <label for="">To date</label>
+        <input class="form-control" type="date" name="" id="">
+    </div>
+    <div>
+            <label for="">From date</label>
+            <input class="form-control" type="date" name="" id="">
+        </div>
+    </div>
+</div>
